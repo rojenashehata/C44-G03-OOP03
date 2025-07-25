@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +10,8 @@ namespace AssignmentOOP03
     public class HiringDate
     {
 		private int _day;
-		private DateTime dateTime=DateTime.Now;
-
+		private DateTime dateTime;
+		
 
 		public HiringDate(int day,int month,int year)
 		{
@@ -31,6 +31,7 @@ namespace AssignmentOOP03
 		{
             DateTime enteredDate;
 			bool isValid=DateTime.TryParse($"{day}/{month}/{year}", out enteredDate);
+			dateTime=DateTime.Now;
             if (isValid)
                 if (dateTime > enteredDate)
 				{
