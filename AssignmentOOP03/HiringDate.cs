@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace AssignmentOOP03
     public class HiringDate
     {
 		private int _day;
-		private DateTime dateTime;
+		private DateTime dateTime=new DateTime();
 		
 
 		public HiringDate(int day,int month,int year)
@@ -30,8 +31,12 @@ namespace AssignmentOOP03
 		 bool isValidDate(int day, int month, int year)
 		{
             DateTime enteredDate;
-			bool isValid=DateTime.TryParse($"{day}/{month}/{year}", out enteredDate);
-			dateTime=DateTime.Now;
+			bool isValid=DateTime.TryParseExact($"{day:D2}/{month:D2}/{year}","dd/MM/yyyy", CultureInfo.InvariantCulture ,
+				DateTimeStyles.None,
+				 out enteredDate);
+
+			dateTime=DateTime.Now.Date;
+			
             if (isValid)
                 if (dateTime > enteredDate)
 				{
@@ -47,11 +52,14 @@ namespace AssignmentOOP03
 				return _day; 
 			}
 			set {
-				if (value > 0&& value <= DateTime.DaysInMonth(dateTime.Year,dateTime.Month))
+           
+
+                if (value > 0&& value <= DateTime.DaysInMonth(dateTime.Year,dateTime.Month))
 					_day = value;
-				
-			}
-		}
+
+
+            }
+        }
 
 		private int _month;
 
