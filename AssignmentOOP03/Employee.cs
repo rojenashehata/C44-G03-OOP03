@@ -97,7 +97,7 @@ namespace AssignmentOOP03
         {
             get { return _salary; }
             set {
-                if (Salary < 0)
+                if (value < 0)
                     Console.WriteLine("Invalid! negative salary");
                 else
                     _salary = value;
